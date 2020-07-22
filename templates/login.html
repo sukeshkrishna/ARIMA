@@ -1,0 +1,72 @@
+
+{% block body %}
+{% if session['logged_in'] %}
+<p>You're logged in already!</p>
+{% else %}
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<script language="javascript">
+function check(form)
+{
+	if(form.username.value == "" || form.password.value == "")
+	{
+		alert("Error Enter Password or Username")
+		return false;
+
+	}
+	else
+	{
+		return true;
+	}
+}
+function reg()
+{
+	alert("redirect")
+	location.ahref= "/register";
+}
+</script>
+
+<h2><center><font color="#FFFFF" size=6>Stock Price Prediction And Forecasting Using Arima Model</font></center></h2>
+
+</br>
+</br>
+</br>
+</br>
+
+</br>
+</br>
+<form action="/login" method="POST">
+<table width="20%" bgcolor="FFFFFF" align="center">
+
+<tr>
+<td colspan=2><center><font size=6><b>Login</b></font></center></td>
+</tr>
+
+<tr>
+<td>Username:</td>
+<td><input type="text" size=25 name="username"></td>
+</tr>
+
+<tr>
+<td>Password:</td>
+<td><input type="Password" size=25 name="password"></td>
+</tr>
+
+<tr>
+<td><input type="Reset" ></td>
+<td><input type="submit" onclick="return check(this.form)" value="Login"></td>
+
+</tr>
+
+</table>
+</form>
+<form action="/registerpage" method="POST">
+<table width="20%" bgcolor="FFFFFF" align="center">
+<tr>
+<td><input type="submit" value="Register"></td>
+
+</tr>
+
+</table>
+</form>
+{% endif %}
+{% endblock %}

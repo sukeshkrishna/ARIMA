@@ -1,0 +1,108 @@
+
+{% block body %}
+{% if session['logged_in'] %}
+<p>You're logged in already!</p>
+{% else %}
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<script language="javascript">
+function check(form)
+{
+	if(form.name.value == "" )
+	{
+		alert("Error Enter Name")
+		return false;
+
+	}
+	if(form.username.value == "" )
+	{
+		alert("Error Enter Username")
+		return false;
+
+	}
+	if(form.password.value == "" )
+	{
+		alert("Error Enter Password")
+		return false;
+
+	}
+	var email = form.emailid.value;
+	atpos = email.indexOf("@");
+	dotpos = email.lastIndexOf(".");
+	if (email == "" || atpos < 1 || ( dotpos - atpos < 2 ))
+	{
+	    alert("Please enter correct email ID")
+	    return false;
+	}
+	if( form.mobile.value == "" || isNaN( form.mobile.value) || form.mobile.value.length != 10 )
+    {
+        alert( "Please provide a Mobile No in the format 123 and 10 Digit." );
+        return false;
+    }
+
+
+	else
+	{
+		return true;
+	}
+}
+
+</script>
+<h2><center><font color="#FFFFF" size=6>Stock Price Prediction And Forecasting Using Arima Model</font></center></h2>
+
+</br>
+</br>
+</br>
+</br>
+
+</br>
+</br>
+
+<form action="/register" method="POST">
+<table width="20%" bgcolor="FFFFFF" align="center">
+
+<tr>
+<td colspan=2><center><font size=6><b>Registration</b></font></center></td>
+</tr>
+<tr>
+<td>Name:</td>
+<td><input type="text" size=25 name="name"></td>
+</tr>
+<tr>
+<td>Username:</td>
+<td><input type="text" size=25 name="username"></td>
+</tr>
+
+<tr>
+<td>Password:</td>
+<td><input type="Password" size=25 name="password"></td>
+</tr>
+
+<tr>
+<td>Email ID:</td>
+<td><input type="text" size=25 name="emailid"></td>
+</tr>
+
+<tr>
+<td>Mobile No:</td>
+<td><input type="text" size=25 name="mobile"></td>
+</tr>
+
+<tr>
+<td><input type="Reset" ></td>
+<td><input type="submit" onclick="return check(this.form)" value="Register"></td>
+
+</tr>
+
+</table>
+</form>
+<form action="/loginpage" method="POST">
+<table width="20%" bgcolor="FFFFFF" align="center">
+<tr>
+<td><input type="submit" value="Login"></td>
+
+</tr>
+
+</table>
+</form>
+{% endif %}
+{% endblock %}

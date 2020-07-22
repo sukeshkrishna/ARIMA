@@ -1,0 +1,162 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+</head>
+<script language="javascript">
+function check(form)
+{
+
+	if(form.stockname.value == "")
+	{
+		alert("Error Enter Stock Name")
+		return false;
+
+	}
+
+	if(form.startdate.value == "")
+	{
+		alert("Error Choose Start Date")
+		return false;
+
+	}
+	if(form.enddate.value == "")
+	{
+		alert("Error Choose End Date")
+		return false;
+
+	}
+	else
+	{
+		a=form.startdate.value;
+		b=form.enddate.value;
+		dt1 = new Date(a);
+		dt2 = new Date(b);
+		c=Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate()) ) /(1000 * 60 * 60 * 24));
+		var today = new Date();
+		var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+		c1=Math.floor((Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate()) ) /(1000 * 60 * 60 * 24));
+		c2=Math.floor((Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()) - Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) ) /(1000 * 60 * 60 * 24));
+		if (c<0 || c1<0 || c2<0)
+		{
+			alert("Error Choose Start date and End Date correctly")
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+
+	}
+}
+
+</script>
+
+
+<h2><center><font color="#FFFFF" size=6>Stock Price Prediction And Forecasting Using Arima Model</font></center></h2>
+
+</br>
+</br>
+</br>
+</br>
+
+</br>
+</br>
+
+
+	    <a href="/logout" color="#FFFFF" size=6>Logout</a>
+
+<form action="/Stock" method="POST">
+<table width="20%" bgcolor="FFFFFF" align="center">
+
+<tr>
+<td colspan=2><center><font size=6><b>Stock Details</b></font></center></td>
+</tr>
+
+<tr>
+<td>Stock Name:</td>
+<td><select name="stockname">
+        <option value="ADANIPORTS">Adani Ports and Special Economic Zone Ltd.</option>
+	<option value="ADANIPOWER">Adani Power</option>ADANIPOWER
+         <option value="ASIANPAINT">Asian Paints Ltd.</option>
+          <option value="AXISBANK">Axis Bank Ltd.</option>
+           <option value="BAJAJ-AUTO">Bajaj Auto Ltd.</option>
+            <option value="BAJFINANCE">Bajaj Finance Ltd.</option>
+             <option value="BAJAJFINSV">Bajaj Finserv Ltd.</option>
+              <option value="BPCL">Bharat Petroleum Corporation Ltd.</option>
+               <option value="BHARTIARTL">Bharti Airtel Ltd.</option>
+		<option value="SBICARD">SBI CARD.</option>
+                <option value="INFRATEL">Bharti Infratel Ltd.</option>
+                 <option value="BRITANNIA">Britannia Industries Ltd.</option>
+                  <option value="CIPLA">Cipla Ltd.</option>
+                   <option value="COALINDIA">Coal India Ltd.</option>
+                    <option value="DRREDDY">Dr. Reddy's Laboratories Ltd.</option>
+                     <option value="EICHERMOT">Eicher Motors Ltd.</option>
+                      <option value="GAIL">GAIL (India) Ltd.</option>
+                       <option value="GRASIM">Grasim Industries Ltd.</option>
+                        <option value="HCLTECH">HCL Technologies Ltd.</option>
+                         <option value="HDFCBANK">HDFC Bank Ltd.</option>
+                          <option value="HEROMOTOCO">Hero MotoCorp Ltd.</option>
+                           <option value="HINDALCO">Hindalco Industries Ltd.</option>
+                           <option value="HINDUNILVR">Hindustan Unilever Ltd.</option>
+         <option value="HDFC">Housing Development Finance Corporation Ltd.</option>
+          <option value="ICICIBANK">ICICI Bank Ltd.</option>
+           <option value="ITC">ITC Ltd.</option>
+            <option value="IBULHSGFIN">Indiabulls Housing Finance Ltd.</option>
+             <option value="IOC">Indian Oil Corporation Ltd.</option>
+              <option value="INDUSINDBK">IndusInd Bank Ltd.</option>
+               <option value="INFY">Infosys Ltd.</option>
+                <option value="JSWSTEEL">JSW Steel Ltd.</option>
+                 <option value="KOTAKBANK">Kotak Mahindra Bank Ltd.</option>
+         <option value="LT">Larsen & Toubro Ltd.</option>
+          <option value="M&M">Mahindra & Mahindra Ltd.</option>
+           <option value="MARUTI">Maruti Suzuki India Ltd.</option>
+            <option value="NTPC">NTPC Ltd.</option>
+             <option value="ONGC">Oil & Natural Gas Corporation Ltd.</option>
+              <option value="POWERGRID">Power Grid Corporation of India Ltd.</option>
+               <option value="RELIANCE">Reliance Industries Ltd</option>
+                <option value="SBIN">State Bank of India</option>
+                 <option value="SUNPHARMA">Sun Pharmaceutical Industries Ltd.</option>
+                  <option value="TCS">Tata Consultancy Services Ltd.</option>
+                   <option value="TATAMOTORS">Tata Motors Ltd.</option>
+                    <option value="TATASTEEL">Tata Steel Ltd.</option>
+                     <option value="TECHM">Tech Mahindra Ltd.</option>
+                      <option value="TITAN">Titan Company Ltd.</option>
+                       <option value="UPL">UPL Ltd.</option>
+                        <option value="ULTRACEMCO">UltraTech Cement Ltd.</option>
+                         <option value="VEDL">Vedanta Ltd.</option>
+                          <option value="WIPRO">Wipro Ltd.</option>
+                           <option value="YESBANK">Yes Bank Ltd.</option>
+                            <option value="ZEEL">Zee Entertainment Enterprises Ltd.</option>
+    </select></td>
+</tr>
+
+<tr>
+<td>Starting Date:</td>
+<td><input type="date" size=25 name="startdate"></td>
+</tr>
+
+<tr>
+<td>Ending Date:</td>
+<td><input type="date" size=25 name="enddate"></td>
+</tr>
+
+<tr>
+<td><input type="Reset" ></td>
+<td><input type="submit" onclick="return check(this.form)" value="Submit"></td>
+
+</tr>
+
+</table>
+</form>
+
+</body>
+</html>
